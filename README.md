@@ -141,7 +141,7 @@ However, it should not be assumed that achieving good control is effortless. Hav
 ___
 Update 2
 ## More Attempts
-After hours of of adjusting and tweaking with the tuning parameters in the ```main.cpp``` specifically the ```pid_steer.Init``` and ```pid_throttle.Init``` I came to conclusion that not the same input will always give out the same output .
+After hours of of adjusting and tweaking with the tuning parameters in the ```main.cpp``` specifically the ```pid_steer.Init``` and ```pid_throttle.Init``` I came to conclusion that not the same input will always give out the same output . In other words , running the code without changing anything (same tunings) will result in different outputs in the Carla simulation.
 While my tuning parameters might give certain output, it might not do the same when someone else (or even me) repeat it.
 So following a considerable amount of effort dedicated to refining and perfecting the almost stable tunings are `pid_steer.Init(0.3, 0.0008, 0.4, 1.2, -1.2);` and `pid_throttle.Init(0.2, 0.00087, 0.12, 1.0, -1.0);` Line '252' and '259' respectively in `main.cpp`
 ## Below here are results for the same above parameters
