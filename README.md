@@ -64,7 +64,7 @@ The files ```pid_controller.cpp``` and ```pid_controller.h``` can be found in th
 
 Run the simulator and see in the desktop mode the car in the CARLA simulator. Take a screenshot and add it to your report. The car should not move in the simulation.
 
-INSERT STATIONARY CAR HERE
+INSERTING STATIONARY CAR HERE
 
 ### Step 2: PID controller for throttle:
 In ```main.cpp```, there is a TODO (step 2) that needs to be completed in order to compute the error for the throttle PID. Specifically, the error is the speed difference between the actual speed and the desired speed.
@@ -138,22 +138,39 @@ However, it should not be assumed that achieving good control is effortless. Hav
 
 * Advanced algorithms: More advanced algorithms, such as fractional order PID, cascade control, or feedforward control, can be used to improve the performance of the controller in specific situations where traditional PID control may not be effective.
 
+___
+Update 2
+## More Attempts
+After hours of of adjusting and tweaking with the tuning parameters in the ```main.cpp``` specifically the ```pid_steer.Init``` and ```pid_throttle.Init``` I came to conclusion that not the same input will always give out the same output .
+While my tuning parameters might give certain output, it might not do the same when someone else (or even me) repeat it.
+So following a considerable amount of effort dedicated to refining and perfecting the almost stable tunings are `pid_steer.Init(0.3, 0.0008, 0.4, 1.2, -1.2);` and `pid_throttle.Init(0.2, 0.00087, 0.12, 1.0, -1.0);` Line '252' and '259' respectively in `main.cpp`
+## Below here are results for the same above parameters
+### Videos
+
+![Alt text](media/Other%20attempts/2nd%20attmpt.gif)
 
 
+![Alt text](media/Other%20attempts/3%20att.gif)
 
 
+![Alt text](media/Other%20attempts/H%20attmpt.gif)
 
+### More plots
+1
+![Alt text](media/Other%20attempts/2nd%20it.png)
 
+![Alt text](media/Other%20attempts/2nd%20pid.png)
 
+2
 
+![Alt text](media/Other%20attempts/Plot1.png)
 
+![Alt text](media/Other%20attempts/Plot2.png)
 
+3
 
+![Alt text](media/Other%20attempts/Plot3.png)
 
-
-
-
-
-
+![Alt text](media/Other%20attempts/Plot4.png)
 
 

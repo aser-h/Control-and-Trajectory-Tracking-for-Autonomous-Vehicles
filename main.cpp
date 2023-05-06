@@ -1,3 +1,4 @@
+
 /**********************************************
  * Self-Driving Car Nano-degree - Udacity
  *  Created on: September 20, 2020
@@ -184,7 +185,7 @@ void path_planner(vector<double>& x_points, vector<double>& y_points, vector<dou
 
 }
 
-void set_obst(vector<double> x_points, vector<double> y_points, vector<State>& obstacles, bool& obst_flag){
+void set_obst(vector<double> x_points, vector<double> y_points, vector<State>& obstacles, bool& mrk_i){
 
 	for( int i = 0; i < x_points.size(); i++){
 		State obstacle;
@@ -192,7 +193,7 @@ void set_obst(vector<double> x_points, vector<double> y_points, vector<State>& o
 		obstacle.location.y = y_points[i];
 		obstacles.push_back(obstacle);
 	}
-	obst_flag = true;
+	mrk_i = true;
 }
 
 
@@ -248,14 +249,14 @@ int main ()
   * TODO (Step 1): create pid (pid_steer) for steer command and initialize values
   **/
   PID pid_steer = PID();
-  pid_steer.Init(0.3, 0.01, 0.4, 1.2, -1.2);
+  pid_steer.Init(0.3, 0.0008, 0.4, 1.2, -1.2);
 
   // initialize pid throttle
   /**
   * TODO (Step 1): create pid (pid_throttle) for throttle command and initialize values
   **/
   PID pid_throttle = PID();
-  pid_throttle.Init(0.35, 0.01, 0.2, 1.0, -1.0);
+  pid_throttle.Init(0.2, 0.00087, 0.12, 1.0, -1.0);
 
   h.onMessage([&pid_steer, &pid_throttle, &new_delta_time, &timer, &prev_timer, &i, &prev_timer](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode)
   {
@@ -336,7 +337,7 @@ int main ()
           double angle_desired = angle_between_points(x_position, y_position, x_points[closest_pt_idx], y_points[closest_pt_idx]);
 
           // Compute the desired angle for steering by subtracting the current heading (yaw) from the angle between the current position and the closest point, and then normalize the result
-          error_steer = normalize(angle_desired - yaw);
+           error_steer = normalize(angle_desired - yaw);
 
 
           /**
