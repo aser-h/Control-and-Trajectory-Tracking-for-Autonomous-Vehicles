@@ -336,7 +336,7 @@ int main ()
           double angle_desired = angle_between_points(x_position, y_position, x_points[closest_pt_idx], y_points[closest_pt_idx]);
 
           // Compute the desired angle for steering by subtracting the current heading (yaw) from the angle between the current position and the closest point, and then normalize the result
-          double error_steer = normalize(angle_desired - yaw);
+          error_steer = normalize(angle_desired - yaw);
 
 
           /**
